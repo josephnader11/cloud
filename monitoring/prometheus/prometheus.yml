@@ -1,0 +1,23 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'ticket-service'
+    static_configs:
+      - targets: ['ticket-service:5001']
+    metrics_path: '/metrics'
+
+  - job_name: 'support-service'
+    static_configs:
+      - targets: ['support-service:5002']
+    metrics_path: '/metrics'
+
+  - job_name: 'notification-service'
+    static_configs:
+      - targets: ['notification-service:5003']
+    metrics_path: '/metrics'
+
+  - job_name: 'reporting-service'
+    static_configs:
+      - targets: ['reporting-service:5004']
+    metrics_path: '/metrics'

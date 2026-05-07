@@ -1,0 +1,54 @@
+services:
+  ticket-service:
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./services/ticket-service:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+
+  support-service:
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./services/support-service:/app
+    environment:
+      FLASK_DEBUG: "1"
+
+  notification-service:
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./services/notification-service:/app
+    environment:
+      FLASK_DEBUG: "1"
+
+  reporting-service:
+    ports:
+      - "5004:5004"
+    volumes:
+      - ./services/reporting-service:/app
+    environment:
+      FLASK_DEBUG: "1"
+
+  frontend:
+    ports:
+      - "3000:80"
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"   # RabbitMQ Management UI
+
+  ticket-db:
+    ports:
+      - "5432:5432"
+
+  prometheus:
+    ports:
+      - "9090:9090"
+
+  grafana:
+    ports:
+      - "3001:3000"

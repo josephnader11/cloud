@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  ticket-service:
+    restart: always
+    environment:
+      NODE_ENV: production
+
+  support-service:
+    restart: always
+    environment:
+      FLASK_ENV: production
+
+  notification-service:
+    restart: always
+    environment:
+      FLASK_ENV: production
+
+  reporting-service:
+    restart: always
+    environment:
+      FLASK_ENV: production
+
+  frontend:
+    restart: always
+    ports:
+      - "80:80"
+
+  ticket-db:
+    restart: always
+
+  rabbitmq:
+    restart: always
+
+  prometheus:
+    ports:
+      - "9090:9090"
+
+  grafana:
+    restart: always
+    ports:
+      - "3001:3000"

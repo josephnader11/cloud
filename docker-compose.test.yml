@@ -1,0 +1,48 @@
+
+services:
+  ticket-service:
+    ports:
+      - "6001:5001"
+    environment:
+      NODE_ENV: test
+      DB_NAME: tickets_test
+
+  support-service:
+    ports:
+      - "6002:5002"
+    environment:
+      FLASK_ENV: testing
+
+  notification-service:
+    ports:
+      - "6003:5003"
+    environment:
+      FLASK_ENV: testing
+
+  reporting-service:
+    ports:
+      - "6004:5004"
+    environment:
+      FLASK_ENV: testing
+
+  frontend:
+    ports:
+      - "4000:80"
+
+  ticket-db:
+    ports:
+      - "5433:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+
+  rabbitmq:
+    ports:
+      - "5673:5672"
+
+  prometheus:
+    ports:
+      - "9091:9090"
+
+  grafana:
+    ports:
+      - "3002:3000"
