@@ -25,7 +25,7 @@ async function connectRabbitMQ() {
       process.env.RABBITMQ_URL || 'amqp://guest:guest@rabbitmq:5672'
     );
     channel = await connection.createChannel();
-    await channel.assertQueue('ticket_events');
+    await channel.assertQueue('ticket_events', { durable: true });
     console.log('✅ Connected to RabbitMQ');
   } catch (err) {
     console.error('RabbitMQ connection failed, retrying...', err.message);
